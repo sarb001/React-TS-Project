@@ -1,6 +1,7 @@
 
 import './App.css'
-import StateUsage from './assets/Components/StateUsage'
+import ContextUsage from './assets/Components/ContextUsage'
+// import StateUsage from './assets/Components/StateUsage'
 // import Box from './assets/Components/Box'
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
           {/* <Box  heading = {"Hello Structuring here"} 
            addnumber = {45}
           /> */}
-          <StateUsage />
+          {/* <StateUsage /> */}
+          <ContextUsage />
     </>
   )
 }
