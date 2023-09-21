@@ -31,7 +31,7 @@ export const ThemeContext = createContext<ThemeContextType>({
      )
 }
 
-// passed here as Main Component 
+// Passed here as Main Component Provider 
 
 const ContextUsage = () => {
   return (

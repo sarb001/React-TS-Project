@@ -1,6 +1,7 @@
 
 import './App.css'
-import ContextUsage from './assets/Components/ContextUsage'
+import UseReducerUsage from './assets/Components/UseReducerUsage'
+// import ContextUsage from './assets/Components/ContextUsage'
 // import StateUsage from './assets/Components/StateUsage'
 // import Box from './assets/Components/Box'
 
@@ -12,7 +13,8 @@ function App() {
            addnumber = {45}
           /> */}
           {/* <StateUsage /> */}
-          <ContextUsage />
+          {/* <ContextUsage /> */}
+          <UseReducerUsage />
     </>
   )
 }
