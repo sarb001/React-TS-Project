@@ -12,7 +12,6 @@ import { useSelector , useDispatch } from 'react-redux/es/exports';
 
 function App() {
 
-
   const [val, setval] = useState<number>(0);
   const dispatch = useDispatch();
   const count = useSelector((state : StateType ) => state.counter);
@@ -40,13 +39,15 @@ function App() {
           {/* <UseReducerUsage /> */}
 
           {/* <Redux /> */}
-          
+
+
           <div className = "mainapp">
-                <h3> Toolkit Counter - {count}  </h3>
-                  <button onClick = {incrementHandler}> Add + </button>
-                  <button onClick = {decrementHandler}> Subtact - </button>
+                <h3> Toolkit Counter here - {count}  </h3>
+                  <button onClick = {incrementHandler}> Add ++ </button>
+                  <button onClick = {decrementHandler}> Subtact --  </button>
                   <div>
-                     <input type = 'number'  value = {val}   onChange={(e) => setval(Number(e.target.value))} />
+                     <input type = 'number'  value = {val}   
+                     onChange={(e) => setval(Number(e.target.value))} />
                   </div>
                   <button onClick = {incrementValueBy}> Add Value </button>
           </div>
