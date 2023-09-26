@@ -61,10 +61,57 @@
 
 // For React + Ts Project - Todo App  
 
+
+import { AppBar, Container, Toolbar, Typography ,Stack  ,Button , TextField } from '@mui/material' ;
+import { useState } from 'react' ;
+import TodoItem from './assets/Components/TodoItem';
+
 const App = () => {
+
+    const [todos, setTodos] = useState<TodoItemType[]>([]) ;
+    const [title,setTitle]  = useState<TodoItemType["title"]>("");
+  
+    const completeHandler = (id : string):void => {
+      alert(id);
+    };
+    const deleteHandler   = (id : string):void => {
+      alert(id);
+    };
+
+    const addHandler = () => {
+        const newTodo = {
+           title,
+           isCompleted : false,
+           id : String(Math.random() * 1000) ,
+        };
+        setTodos((prev) => [ ...prev, newTodo]);
+        setTitle("");
+    }
+
   return (
     <>
-        <h3> Inside the Todo App  </h3>
+    <Container maxWidth = "sm" sx = {{height : '80vh'}}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography>  Todo App React + Ts   </Typography> 
+        </Toolbar>
+      </AppBar>
+
+      <Stack  height = {'80%'} direction={"column"}  spacing={'1rem'} p = {'1rem'}>
+              {todos.map((i) => (
+                 <TodoItem  key = {i.id}  todo = {i} 
+                  deleteHandler   = {deleteHandler}
+                  completeHandler = {completeHandler}
+                 /> 
+              ))}
+      </Stack>
+        <TextField
+         value = {title} 
+         onChange={(e) => setTitle(e.target.value)} 
+         fullWidth label = {'New Task'}  />
+        <Button variant='contained'  onClick = {addHandler} > Add  </Button>
+        <Button variant='contained' > Delete </Button>
+    </Container>
     </>
   )
 }
