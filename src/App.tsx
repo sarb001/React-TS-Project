@@ -75,17 +75,20 @@ const App = () => {
       alert(id);
     };
     const deleteHandler   = (id : string):void => {
-      alert(id);
+       const deltodo = todos.filter((i) => i.id !== id);
+       setTodos(deltodo);
     };
 
     const addHandler = () => {
-        const newTodo = {
-           title,
-           isCompleted : false,
-           id : String(Math.random() * 1000) ,
-        };
-        setTodos((prev) => [ ...prev, newTodo]);
-        setTitle("");
+         if(title !== ""){
+           const newTodo = {
+             title,
+             isCompleted : false,
+             id : String(Math.random() * 1000) ,
+            };
+            setTodos((prev) => [ ...prev, newTodo]);
+            setTitle("");
+          }
     }
 
   return (
@@ -108,9 +111,15 @@ const App = () => {
         <TextField
          value = {title} 
          onChange={(e) => setTitle(e.target.value)} 
-         fullWidth label = {'New Task'}  />
-        <Button variant='contained'  onClick = {addHandler} > Add  </Button>
-        <Button variant='contained' > Delete </Button>
+         fullWidth label = {'New Task'} 
+         onKeyDown = {(e) => {
+          if(e.key === "Enter")
+          addHandler();
+         }}
+         />
+        <Button variant='contained'  onClick = {addHandler} >
+           Add  
+        </Button>
     </Container>
     </>
   )
