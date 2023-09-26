@@ -70,16 +70,14 @@ const App = () => {
 
     const [todos, setTodos] = useState<TodoItemType[]>([]) ;
     const [title,setTitle]  = useState<TodoItemType["title"]>("");
-  
-    const completeHandler = (id : string):void => {
-      alert(id);
-    };
+
+
     const deleteHandler   = (id : string):void => {
        const deltodo = todos.filter((i) => i.id !== id);
        setTodos(deltodo);
     };
 
-    const addHandler = () => {
+    const addHandler  = () => {
          if(title !== ""){
            const newTodo = {
              title,
@@ -89,6 +87,14 @@ const App = () => {
             setTodos((prev) => [ ...prev, newTodo]);
             setTitle("");
           }
+    }
+
+    const EditHandler = (id : string ,newtitle : string) : void => {
+       const editTodo = todos.map((i) => {
+         if(i.id === id) i.title = newtitle;
+         return i;
+       })
+       setTodos(editTodo);
     }
 
   return (
@@ -104,7 +110,7 @@ const App = () => {
               {todos.map((i) => (
                  <TodoItem  key = {i.id}  todo = {i} 
                   deleteHandler   = {deleteHandler}
-                  completeHandler = {completeHandler}
+                  EditHandler = {EditHandler}
                  /> 
               ))}
       </Stack>
@@ -112,10 +118,7 @@ const App = () => {
          value = {title} 
          onChange={(e) => setTitle(e.target.value)} 
          fullWidth label = {'New Task'} 
-         onKeyDown = {(e) => {
-          if(e.key === "Enter")
-          addHandler();
-         }}
+         onKeyDown = {(e) => { if(e.key === "Enter") addHandler() }}
          />
         <Button variant='contained'  onClick = {addHandler} >
            Add  
